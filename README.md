@@ -279,6 +279,12 @@ Open the URL printed in the terminal (usually `http://localhost:5173`).
 The Inspector is the fastest way to verify your server works before wiring it to a client.
 
 ---
+## Architecture
+
+![System Overview](assets/architecture_overview.svg)
+
+![Request Lifecycle](assets/request_flow.svg)
+---
 
 ## How to extend
 
