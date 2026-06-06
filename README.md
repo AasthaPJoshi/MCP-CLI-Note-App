@@ -56,8 +56,6 @@ This codebase walks through every major building block of MCP development:
 
 ---
 
-## Architecture
-
 ### System overview
 
 ```
@@ -134,6 +132,13 @@ def format_document(doc_id: str) -> list[base.Message]:
 ```
 
 Invoke any prompt from the CLI with `/format deposition.md`.
+
+---
+## Architecture
+
+![System Overview](architecture_overview.svg)
+
+![Request Lifecycle](request_flow.svg)
 
 ---
 
@@ -278,12 +283,7 @@ Open the URL printed in the terminal (usually `http://localhost:5173`).
 
 The Inspector is the fastest way to verify your server works before wiring it to a client.
 
----
-## Architecture
 
-![System Overview](assets/architecture_overview.svg)
-
-![Request Lifecycle](assets/request_flow.svg)
 ---
 
 ## How to extend
