@@ -1,0 +1,94 @@
+<svg width="680" height="440" viewBox="0 0 680 440" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>MCP CLI Note App - Request Lifecycle</title>
+<desc>Flowchart showing the lifecycle of a chat request through the MCP CLI Note App</desc>
+
+<style>
+  text { font-family: Arial, sans-serif; }
+  .title { font-size: 14px; font-weight: 600; }
+  .sub { font-size: 12px; }
+  .label { font-size: 11px; }
+</style>
+
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#185fa5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<!-- Background -->
+<rect width="680" height="440" fill="#ffffff"/>
+
+<!-- Step 1: User input -->
+<rect x="30" y="40" width="140" height="56" rx="8" fill="#f1efe8" stroke="#5f5e5a" stroke-width="0.8"/>
+<text class="title" x="100" y="62" text-anchor="middle" fill="#2c2c2a">User input</text>
+<text class="sub" x="100" y="80" text-anchor="middle" fill="#5f5e5a">text / @doc / /cmd</text>
+
+<!-- arrow 1 to 2 -->
+<line x1="170" y1="68" x2="208" y2="68" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/>
+
+<!-- Step 2: Parse input -->
+<rect x="210" y="40" width="150" height="56" rx="8" fill="#eeedfe" stroke="#534ab7" stroke-width="0.8"/>
+<text class="title" x="285" y="62" text-anchor="middle" fill="#3c3489">Parse input</text>
+<text class="sub" x="285" y="80" text-anchor="middle" fill="#534ab7">inject @doc content</text>
+
+<!-- arrow 2 to 3 -->
+<line x1="360" y1="68" x2="398" y2="68" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/>
+
+<!-- Step 3: Claude API call -->
+<rect x="400" y="40" width="150" height="56" rx="8" fill="#e6f1fb" stroke="#185fa5" stroke-width="0.8"/>
+<text class="title" x="475" y="62" text-anchor="middle" fill="#0c447c">Claude API call</text>
+<text class="sub" x="475" y="80" text-anchor="middle" fill="#185fa5">messages + tools list</text>
+
+<!-- arrow 3 down to decision -->
+<line x1="475" y1="96" x2="475" y2="148" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/>
+
+<!-- Decision diamond -->
+<polygon points="475,150 545,190 475,230 405,190" fill="#fff8e6" stroke="#ba7517" stroke-width="0.8"/>
+<text class="sub" x="475" y="186" text-anchor="middle" fill="#633806">stop_reason</text>
+<text class="sub" x="475" y="202" text-anchor="middle" fill="#633806">= tool_use?</text>
+
+<!-- YES label and arrow -->
+<text class="label" x="558" y="188" fill="#555">yes</text>
+<line x1="545" y1="190" x2="590" y2="190" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/>
+
+<!-- Step 4: MCP tool call -->
+<rect x="592" y="162" width="72" height="56" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.8"/>
+<text class="title" x="628" y="184" text-anchor="middle" fill="#711b13">MCP</text>
+<text class="sub" x="628" y="202" text-anchor="middle" fill="#993c1d">tool call</text>
+
+<!-- loop back arrow -->
+<path d="M628 218 Q628 252 540 252 Q400 252 400 140 Q400 96 400 96" fill="none" stroke="#aaa" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#arr)"/>
+<text class="label" x="505" y="268" text-anchor="middle" fill="#555">tool result — re-call Claude</text>
+
+<!-- NO label and arrow -->
+<text class="label" x="392" y="205" text-anchor="end" fill="#555">no</text>
+<line x1="405" y1="190" x2="340" y2="190" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/>
+
+<!-- Step 5: Final response -->
+<rect x="180" y="162" width="158" height="56" rx="8" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+<text class="title" x="259" y="184" text-anchor="middle" fill="#085041">Final response</text>
+<text class="sub" x="259" y="202" text-anchor="middle" fill="#0f6e56">printed to terminal</text>
+
+<!-- Divider -->
+<line x1="40" y1="310" x2="640" y2="310" stroke="#ddd" stroke-width="0.8" stroke-dasharray="3 4"/>
+<text class="label" x="340" y="328" text-anchor="middle" fill="#888">MCP primitive capabilities used in this project</text>
+
+<!-- Tools badge -->
+<rect x="60" y="344" width="84" height="36" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.8"/>
+<text class="title" x="102" y="366" text-anchor="middle" fill="#711b13">Tools</text>
+<text class="label" x="152" y="366" fill="#444">read_doc_contents, edit_document</text>
+
+<!-- Resources badge -->
+<rect x="60" y="390" width="84" height="36" rx="8" fill="#faeeda" stroke="#ba7517" stroke-width="0.8"/>
+<text class="title" x="102" y="412" text-anchor="middle" fill="#633806">Resources</text>
+<text class="label" x="152" y="412" fill="#444">docs://documents, docs://documents/{id}</text>
+
+<!-- Prompts badge -->
+<rect x="400" y="367" width="84" height="36" rx="8" fill="#eaf3de" stroke="#3b6d11" stroke-width="0.8"/>
+<text class="title" x="442" y="389" text-anchor="middle" fill="#173404">Prompts</text>
+<text class="label" x="492" y="389" fill="#444">format (rewrite doc in Markdown)</text>
+
+</svg>
