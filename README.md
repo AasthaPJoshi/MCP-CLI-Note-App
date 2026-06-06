@@ -58,10 +58,6 @@ This codebase walks through every major building block of MCP development:
 
 ## Architecture
 
-![System Overview](assets/architecture_overview.svg)
-
-![Request Lifecycle](assets/request_flow.svg)
-
 ### System overview
 
 ```
