@@ -1,6 +1,6 @@
 # MCP CLI Note App
 
-A command-line AI assistant built with the **Model Context Protocol (MCP)** and the Anthropic Python SDK. This project demonstrates how to wire a FastMCP server (tools, resources, and prompts) to a Claude-powered CLI client, with tab-completion, inline `@doc` mentions, and `/slash-command` prompts, as a complete working learning example.
+A command-line AI assistant built with the **Model Context Protocol (MCP)** and the Anthropic Python SDK. This project demonstrates how to wire a FastMCP server (tools, resources, and prompts) to a Claude-powered CLI client, with tab-completion, inline `@doc` mentions, and `/slash-command` prompts, as a complete working learning example. 
 
 > **Certification:** [Build Apps with Claude and the Model Context Protocol (MCP)](https://verify.skilljar.com/c/dfhr9h6jxftc) | Anthropic / SkillJar
 
