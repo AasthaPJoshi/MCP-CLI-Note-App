@@ -6,7 +6,7 @@ A command-line AI assistant built with the **Model Context Protocol (MCP)** and 
 
 ---
 
-## Skills demonstrated
+## Skills demonstrated    
 
 This project is built as a portfolio piece showcasing applied AI engineering skills relevant to **AI Engineer, ML Engineer, Data Engineer, and Backend Developer** roles.
 
